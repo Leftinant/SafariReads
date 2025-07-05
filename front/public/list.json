@@ -1,0 +1,100 @@
+[
+    {
+        "id":1,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"free",
+        "image":"front/public/books.jpg"
+    },
+
+    {
+        "id":2,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"water",
+        "image":"front/public/books.jpg"
+    },
+
+    {
+        "id":3,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"free",
+        "image":"front/public/books.jpg"
+    },
+
+    {
+        "id":4,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"free",
+        "image":"front/public/books.jpg"
+    },
+
+    {
+        "id":5,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"food",
+        "image":"front/public/books.jpg"
+    },
+
+    {
+        "id":6,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"sport",
+        "image":"front/public/books.jpg"
+    },
+
+    {
+        "id":7,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"free",
+        "image":"front/public/books.jpg"
+    },
+
+    {
+        "id":8,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"free",
+        "image":"front/public/books.jpg"
+    },
+
+    {
+        "id":9,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"sport",
+        "image":"front/public/books.jpg"
+    },
+
+    {
+        "id":10,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"free",
+        "image":"front/public/books.jpg"
+    },
+
+    {
+        "id":11,
+        "name":"story book",
+        "title":"Every book is a journey.",
+        "price":0,
+        "category":"food",
+        "image":"front/public/books.jpg"
+    }
+]
