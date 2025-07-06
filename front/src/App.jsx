@@ -4,14 +4,14 @@ import Banner from "./components/banner";
 import Footer from "./components/Footer";
 import TopBooks from "./components/TopBooks";
 
-function App () {
+function App() {
   return (
-  <>
-    <NavBar/>
-    <Banner/>
-    <TopBooks/>
-    <Footer/>
-  </>
+    <>
+      <NavBar />
+      <Banner />
+      <TopBooks />
+      <Footer />
+    </>
   );
 }
 

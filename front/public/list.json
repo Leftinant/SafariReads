@@ -1,100 +1,100 @@
 [
     {
         "id":1,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
+        "author":"Mark Masai",
+        "rating":"4",
         "category":"free",
-        "image":"front/public/books.jpg"
+        "image":"/books.png"
     },
 
     {
         "id":2,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
-        "category":"water",
-        "image":"front/public/books.jpg"
+        "author":"Mark Masai",
+        "rating":"5",
+        "category":"top",
+        "image":"/books.png"
     },
 
     {
         "id":3,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
+        "author":"Mark Masai",
+        "rating":"4",
         "category":"free",
-        "image":"front/public/books.jpg"
+        "image":"/books.png"
     },
 
     {
         "id":4,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
-        "category":"free",
-        "image":"front/public/books.jpg"
+        "author":"Mark Masai",
+        "rating":"4",
+        "category":"top",
+        "image":"/books.png"
     },
 
     {
         "id":5,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
+        "author":"Mark Masai",
+        "rating":"4",
         "category":"food",
-        "image":"front/public/books.jpg"
+        "image":"/books.png"
     },
 
     {
         "id":6,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
-        "category":"sport",
-        "image":"front/public/books.jpg"
+        "author":"Mark Masai",
+        "rating":"4",
+        "category":"food",
+        "image":"/books.png"
     },
 
     {
         "id":7,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
-        "category":"free",
-        "image":"front/public/books.jpg"
+        "author":"Mark Masai",
+        "rating":"4",
+        "category":"top",
+        "image":"/books.png"
     },
 
     {
         "id":8,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
-        "category":"free",
-        "image":"front/public/books.jpg"
+        "author":"Mark Masai",
+        "rating":"4",
+        "category":"sport",
+        "image":"/books.png"
     },
 
     {
         "id":9,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
-        "category":"sport",
-        "image":"front/public/books.jpg"
+        "author":"Mark Masai",
+        "rating":"5",
+        "category":"top",
+        "image":"/books.png"
     },
 
     {
         "id":10,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
-        "category":"free",
-        "image":"front/public/books.jpg"
+        "author":"Mark Masai",
+        "rating":"5",
+        "category":"top",
+        "image":"/books.png"
     },
 
     {
         "id":11,
-        "name":"story book",
         "title":"Every book is a journey.",
-        "price":0,
-        "category":"food",
-        "image":"front/public/books.jpg"
+        "author":"Mark Masai",
+        "rating":"4",
+        "category":"top",
+        "image":"/books.png"
     }
 ]
