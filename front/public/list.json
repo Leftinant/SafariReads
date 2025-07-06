@@ -96,5 +96,14 @@
         "rating":"4",
         "category":"top",
         "image":"/books.png"
+    },
+
+    {
+        "id":12,
+        "title":"Every book is a journey.",
+        "author":"Mark Masai",
+        "rating":"4",
+        "category":"food",
+        "image":"/books.png"
     }
 ]
