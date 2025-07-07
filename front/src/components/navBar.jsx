@@ -10,7 +10,7 @@ function NavBar() {
       </li>
       <li>
         <b>
-          <a>Course</a>
+          <a>Categories</a>
         </b>
       </li>
       <li>
