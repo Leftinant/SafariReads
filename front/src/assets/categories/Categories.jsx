@@ -6,9 +6,7 @@ function Categories() {
   return (
     <>
       <NavBar />
-      <div className='min-h-screen'>
-        <Category />
-      </div>
+      <Category />
       <Footer />
     </>
   );

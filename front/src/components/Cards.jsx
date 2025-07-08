@@ -1,7 +1,7 @@
 function Cards({ item }) {
   return (
-    <div className=' my-3 p-3'>
-      <div className='w-80 card card-side bg-base-100 hover:scale-105 duration-500'>
+    <div className=' my-3 p-3 dark:bg-slate-900 dark:text-white  bg-white text-black'>
+      <div className='w-80 card card-side hover:scale-105 duration-500 dark:bg-slate-900 dark:text-white  bg-white text-black'>
         <figure className='shadow-xl rounded-md'>
           <img src={item.image} alt='books' />
         </figure>

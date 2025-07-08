@@ -5,7 +5,7 @@
         "author":"Steve Crist",
         "rating":"5",
         "category":"fiction",
-        "image":"/polar.png",
+        "image":"/cover1.png",
         "price":"900.00/="
     },
 
@@ -15,7 +15,7 @@
         "author":"Steve Crist",
         "rating":"3",
         "category":"fiction",
-        "image":"/polar.png",
+        "image":"/cover1.png",
         "price":"800.00/="
     },
 
@@ -25,7 +25,7 @@
         "author":"Steve Crist",
         "rating":"4",
         "category":"fiction",
-        "image":"/polar.png",
+        "image":"/cover1.png",
         "price":"350.00/="
     },
 
@@ -35,7 +35,7 @@
         "author":"Steve Crist",
         "rating":"5",
         "category":"fiction",
-        "image":"/polar.png",
+        "image":"/cover1.png",
         "price":"419.00/="
     },
 
@@ -45,7 +45,7 @@
         "author":"Peter Griffin",
         "rating":"3",
         "category":"comedy",
-        "image":"/spring.png",
+        "image":"/cover2.png",
         "price":"500.00/="
     },
 
@@ -55,7 +55,7 @@
         "author":"Peter Griffin",
         "rating":"5",
         "category":"comedy",
-        "image":"/spring.png",
+        "image":"/cover2.png",
         "price":"200.00/="
     },
 
@@ -65,7 +65,7 @@
         "author":"Peter Griffin",
         "rating":"4",
         "category":"comedy",
-        "image":"/spring.png",
+        "image":"/cover2.png",
         "price":"650.00/="
     },
 
@@ -75,7 +75,7 @@
         "author":"Peter Griffin",
         "rating":"4",
         "category":"comedy",
-        "image":"/spring.png",
+        "image":"/cover2.png",
         "price":"633.00/="
     },
 
@@ -85,7 +85,7 @@
         "author":"Marvin Cheung",
         "rating":"4",
         "category":"history",
-        "image":"/diplomacy.png",
+        "image":"/cover3.png",
         "price":"700.00/="
     },
 
@@ -95,7 +95,7 @@
         "author":"Marvin Cheung",
         "rating":"5",
         "category":"history",
-        "image":"/diplomacy.png",
+        "image":"/cover3.png",
         "price":"777.00/="
     },
 
@@ -105,7 +105,7 @@
         "author":"Marvin Cheung",
         "rating":"5",
         "category":"history",
-        "image":"/diplomacy.png",
+        "image":"/cover3.png",
         "price":"645.00/="
     },
 
@@ -115,7 +115,7 @@
         "author":"Marvin Cheung",
         "rating":"3",
         "category":"history",
-        "image":"/diplomacy.png",
+        "image":"/cover3.png",
         "price":"free"
     },
 
@@ -125,7 +125,7 @@
         "author":"Marvin Cheung",
         "rating":"4",
         "category":"history",
-        "image":"/diplomacy.png",
+        "image":"/cover3.png",
         "price":"123/="
     },
 
@@ -135,7 +135,7 @@
         "author":"Cleophas Malala",
         "rating":"5",
         "category":"horror",
-        "image":"/horror.png",
+        "image":"/cover4.png",
         "price":"1600.00/="
     },
 
@@ -145,7 +145,7 @@
         "author":"Cleophas Malala",
         "rating":"4",
         "category":"horror",
-        "image":"/horror.png",
+        "image":"/cover4.png",
         "price":"1200.00/="
     },
 
@@ -155,7 +155,7 @@
         "author":"Cleophas Malala",
         "rating":"5",
         "category":"horror",
-        "image":"/horror.png",
+        "image":"/cover4.png",
         "price":"3311.00/="
     },
 
@@ -165,7 +165,7 @@
         "author":"Cleophas Malala",
         "rating":"4",
         "category":"horror",
-        "image":"/horror.png",
+        "image":"/cover4.png",
         "price":"1589.00/="
     }
 ]

@@ -5,8 +5,6 @@ import Categories from "./assets/categories/Categories";
 function App() {
   return (
     <>
-      {/* <Home />
-      <Category /> */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/category' element={<Categories />} />

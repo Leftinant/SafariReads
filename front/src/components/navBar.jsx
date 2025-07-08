@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
+import Login from "./Login";
 
 function NavBar() {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  );
-  const element = document.documentElement;
+  localStorage.removeItem("theme");
+  const [theme, setTheme] = useState(() => {
+    if (localStorage.theme) return localStorage.theme;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  });
+
   useEffect(() => {
+    const root = window.document.documentElement;
     if (theme === "dark") {
-      element.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-      document.body.classList.add("dark");
+      root.classList.add("dark");
     } else {
-      element.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-      document.body.classList.remove("dark");
+      root.classList.remove("dark");
     }
-  }, []);
+    localStorage.theme = theme;
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   const navItems = (
     <>
@@ -44,8 +51,8 @@ function NavBar() {
 
   return (
     <>
-      <div className='max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-99'>
-        <div className='navbar bg-base-100 shadow-sm'>
+      <div className='max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-99 bg-white text-black dark:bg-slate-900 dark:text-white'>
+        <div className='navbar shadow-sm  dark:bg-slate-900 dark:text-white  bg-white text-black'>
           <div className='navbar-start'>
             <div className='dropdown'>
               <div
@@ -100,7 +107,11 @@ function NavBar() {
                     <path d='m21 21-4.3-4.3'></path>
                   </g>
                 </svg>
-                <input type='search' className='grow' placeholder='Search' />
+                <input
+                  type='search'
+                  className='grow outline-none'
+                  placeholder='Search'
+                />
               </label>
             </div>
             <div>
@@ -109,12 +120,27 @@ function NavBar() {
                   type='checkbox'
                   value='synthwave'
                   className='theme-controller'
+                  onClick={toggleTheme}
                 />
+                <svg
+                  aria-label='moon'
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 24 24'
+                >
+                  <g
+                    strokeLinejoin='round'
+                    strokeLinecap='round'
+                    strokeWidth='2'
+                    fill='none'
+                    stroke='currentColor'
+                  >
+                    <path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'></path>
+                  </g>
+                </svg>
                 <svg
                   aria-label='sun'
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 24 24'
-                  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
                 >
                   <g
                     strokeLinejoin='round'
@@ -134,28 +160,18 @@ function NavBar() {
                     <path d='m19.07 4.93-1.41 1.41'></path>
                   </g>
                 </svg>
-                <svg
-                  aria-label='moon'
-                  xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 24 24'
-                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                >
-                  <g
-                    strokeLinejoin='round'
-                    strokeLinecap='round'
-                    strokeWidth='2'
-                    fill='none'
-                    stroke='currentColor'
-                  >
-                    <path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'></path>
-                  </g>
-                </svg>
               </label>
             </div>
             <div className=''>
-              <a className='bg-black text-white px-5 py-2 rounded-md hover:bg-slate-500 duration-1000 cursor-pointer'>
+              <a
+                className='bg-yellow-600 text-white px-5 py-2 rounded-3xl hover:bg-slate-500 duration-1000 cursor-pointer'
+                onClick={() =>
+                  document.getElementById("my_modal_3").showModal()
+                }
+              >
                 Login
               </a>
+              <Login />
             </div>
           </div>
         </div>

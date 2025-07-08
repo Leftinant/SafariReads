@@ -9,8 +9,8 @@ function Category() {
 
   return (
     <>
-      <div className='max-w-screen-2xl container mx-auto md:px-20 px-4'>
-        <div className='mt-30'>
+      <div className='max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-900 dark:text-white  bg-white text-black'>
+        <div className='pt-30 '>
           <h1 className='text-3xl font-semibold'>
             Begin Your Literary{" "}
             <span className='text-yellow-500'>Safari 🦒.</span>
