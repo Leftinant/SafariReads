@@ -1,10 +1,9 @@
-import React from "react";
 import Slider from "react-slick";
-import list from "../../public/list.json";
 import Cards from "./Cards";
+import list from "../assets/list.json";
 
 function TopBooks() {
-  const filterData = list.filter((data) => data.category === "top");
+  const filterData = list.filter((data) => data.rating === "5");
 
   var settings = {
     dots: true,
@@ -42,14 +41,14 @@ function TopBooks() {
   };
   return (
     <>
-      <div className='max-w-screen-2xl container mx-auto md:px-20 px-4 py-10 overflow-x-auto'>
-        <div className='flex items-center gap-1'>
-          <div className='w-12'>
-            <p className='transform -rotate-90 font-semibold whitespace-nowrap text-gray-700'>
+      <div className='max-w-screen-2xl container md:px-20 px-7 py-10 '>
+        <div className='md:flex items-center gap-1'>
+          <div className=' whitespace-nowrap w-12'>
+            <h1 className='md:transform md:rotate-270 font-semibold text-gray-700'>
               Top Rated
-            </p>
+            </h1>
           </div>
-          <div className='w-full max-w-auto'>
+          <div className='w-full max-w-auto '>
             <Slider {...settings}>
               {filterData.map((item) => (
                 <Cards item={item} key={item.id} />

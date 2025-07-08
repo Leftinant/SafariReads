@@ -1,15 +1,9 @@
-import React from "react";
-
 function Cards({ item }) {
   return (
-    <div>
-      <div className='card card-side bg-base-100 shadow-sm'>
-        <figure>
-          <img
-            src={item.image}
-            alt='books'
-            className='w-fill h-60 object-cover rounded-md shadow-md'
-          />
+    <div className=' my-3 p-3'>
+      <div className='w-80 card card-side bg-base-100 hover:scale-105 duration-500'>
+        <figure className='shadow-xl rounded-md'>
+          <img src={item.image} alt='books' />
         </figure>
         <div className='card-body '>
           <div className='text-yellow-500 text-sm'>
@@ -17,9 +11,10 @@ function Cards({ item }) {
             {"☆".repeat(5 - item.rating)}
           </div>
           <h2 className='text-sm font-semibold'>{item.title}</h2>
-          <p className='text-xs text-gray-500 mb-1'>{item.author}</p>
+          <h3 className='text-sm text-gray-500'>{item.author}</h3>
+          <p className='text-xs text-green-600 mb-1'>{item.price}</p>
           <div className='card-actions justify-end'>
-            <button className='btn btn-outline btn-sm rounded-2xl mt-2 text-yellow-500 hover:bg-yellow-500 hover:text-white duration-1000'>
+            <button className='btn btn-outline btn-sm flex rounded-2xl mt-2 text-yellow-500 hover:bg-yellow-500 hover:text-white duration-1000'>
               Buy Now
             </button>
           </div>

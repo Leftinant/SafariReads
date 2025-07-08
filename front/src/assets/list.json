@@ -1,0 +1,171 @@
+[
+    {
+        "id":1,
+        "title":"THE POLAROID BOOK.",
+        "author":"Steve Crist",
+        "rating":"5",
+        "category":"fiction",
+        "image":"/polar.png",
+        "price":"900.00/="
+    },
+
+    {
+        "id":2,
+        "title":"THE POLAROID BOOK.",
+        "author":"Steve Crist",
+        "rating":"3",
+        "category":"fiction",
+        "image":"/polar.png",
+        "price":"800.00/="
+    },
+
+    {
+        "id":3,
+        "title":"THE POLAROID BOOK.",
+        "author":"Steve Crist",
+        "rating":"4",
+        "category":"fiction",
+        "image":"/polar.png",
+        "price":"350.00/="
+    },
+
+    {
+        "id":4,
+        "title":"THE POLAROID BOOK.",
+        "author":"Steve Crist",
+        "rating":"5",
+        "category":"fiction",
+        "image":"/polar.png",
+        "price":"419.00/="
+    },
+
+    {
+        "id":5,
+        "title":"Spring is in the Air",
+        "author":"Peter Griffin",
+        "rating":"3",
+        "category":"comedy",
+        "image":"/spring.png",
+        "price":"500.00/="
+    },
+
+    {
+        "id":6,
+        "title":"Spring is in the Air",
+        "author":"Peter Griffin",
+        "rating":"5",
+        "category":"comedy",
+        "image":"/spring.png",
+        "price":"200.00/="
+    },
+
+    {
+        "id":7,
+        "title":"Spring is in the Air",
+        "author":"Peter Griffin",
+        "rating":"4",
+        "category":"comedy",
+        "image":"/spring.png",
+        "price":"650.00/="
+    },
+
+    {
+        "id":8,
+        "title":"Spring is in the Air",
+        "author":"Peter Griffin",
+        "rating":"4",
+        "category":"comedy",
+        "image":"/spring.png",
+        "price":"633.00/="
+    },
+
+    {
+        "id":9,
+        "title":"5 Ideas Global Diplomacy.",
+        "author":"Marvin Cheung",
+        "rating":"4",
+        "category":"history",
+        "image":"/diplomacy.png",
+        "price":"700.00/="
+    },
+
+    {
+        "id":10,
+        "title":"5 Ideas Global Diplomacy.",
+        "author":"Marvin Cheung",
+        "rating":"5",
+        "category":"history",
+        "image":"/diplomacy.png",
+        "price":"777.00/="
+    },
+
+    {
+        "id":11,
+        "title":"5 Ideas Global Diplomacy.",
+        "author":"Marvin Cheung",
+        "rating":"5",
+        "category":"history",
+        "image":"/diplomacy.png",
+        "price":"645.00/="
+    },
+
+    {
+        "id":12,
+        "title":"5 Ideas Global Diplomacy.",
+        "author":"Marvin Cheung",
+        "rating":"3",
+        "category":"history",
+        "image":"/diplomacy.png",
+        "price":"free"
+    },
+
+    {
+        "id":17,
+        "title":"5 Ideas Global Diplomacy.",
+        "author":"Marvin Cheung",
+        "rating":"4",
+        "category":"history",
+        "image":"/diplomacy.png",
+        "price":"123/="
+    },
+
+    {
+        "id":13,
+        "title":"Echoes of War",
+        "author":"Cleophas Malala",
+        "rating":"5",
+        "category":"horror",
+        "image":"/horror.png",
+        "price":"1600.00/="
+    },
+
+    {
+        "id":14,
+        "title":"Echoes of War",
+        "author":"Cleophas Malala",
+        "rating":"4",
+        "category":"horror",
+        "image":"/horror.png",
+        "price":"1200.00/="
+    },
+
+    {
+        "id":15,
+        "title":"Echoes of War",
+        "author":"Cleophas Malala",
+        "rating":"5",
+        "category":"horror",
+        "image":"/horror.png",
+        "price":"3311.00/="
+    },
+
+    {
+        "id":16,
+        "title":"Echoes of War",
+        "author":"Cleophas Malala",
+        "rating":"4",
+        "category":"horror",
+        "image":"/horror.png",
+        "price":"1589.00/="
+    }
+]

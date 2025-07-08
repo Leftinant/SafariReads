@@ -1,13 +1,10 @@
-import React from "react";
-import banner from "../../public/banner.jpg";
-
 function Banner() {
   return (
     <>
       <div className='max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row pt-10'>
         <div className='md:w-1/2 w-full '>
           <img
-            src={banner}
+            src='/banner.jpg'
             className='w-auto h-120 md:ml-30 mt-10'
             alt='banner'
           />

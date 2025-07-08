@@ -6,7 +6,7 @@ Safari Reads is a clean and minimalistic React-based online bookstore built with
 
 ## 🌍 About the Project
 
-Safari Reads isn’t just a bookstore — it's a literary journey. With a fast, responsive frontend and a sleek golden-white theme, this project brings together performance, usability, and culture.
+Safari Reads isn’t just a bookstore — it's a literary journey. With a fast, responsive frontend, this project brings together performance, usability, and culture.
 
 ---
 
@@ -14,9 +14,7 @@ Safari Reads isn’t just a bookstore — it's a literary journey. With a fast, 
 
 - 📚 Browse books by category
 - 🔍 Search functionality
-- 🛒 Add to cart experience (coming soon)
 - 📱 Fully responsive design
-- 🎨 Tailwind-powered theming (gold/white color palette)
 - 🧭 Modern logo and African identity visuals
 
 ---
@@ -36,4 +34,4 @@ Safari Reads isn’t just a bookstore — it's a literary journey. With a fast, 
 
 `bash
 git clone https://[https://github.com/Leftinant/SafariReads.git]
-cd safari-reads
+cd SafariReads

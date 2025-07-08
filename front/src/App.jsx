@@ -1,16 +1,16 @@
-import React from "react";
-import NavBar from "./components/navBar";
-import Banner from "./components/banner";
-import Footer from "./components/Footer";
-import TopBooks from "./components/TopBooks";
+import Home from "./home/home";
+import { Route, Routes } from "react-router-dom";
+import Categories from "./assets/categories/Categories";
 
 function App() {
   return (
     <>
-      <NavBar />
-      <Banner />
-      <TopBooks />
-      <Footer />
+      {/* <Home />
+      <Category /> */}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/category' element={<Categories />} />
+      </Routes>
     </>
   );
 }

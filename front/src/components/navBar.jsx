@@ -1,16 +1,32 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 function NavBar() {
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+  const element = document.documentElement;
+  useEffect(() => {
+    if (theme === "dark") {
+      element.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      document.body.classList.add("dark");
+    } else {
+      element.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      document.body.classList.remove("dark");
+    }
+  }, []);
+
   const navItems = (
     <>
       <li>
         <b>
-          <a>Home</a>
+          <a href='/'>Home</a>
         </b>
       </li>
       <li>
         <b>
-          <a>Categories</a>
+          <a href='/category'>Library</a>
         </b>
       </li>
       <li>
@@ -25,6 +41,7 @@ function NavBar() {
       </li>
     </>
   );
+
   return (
     <>
       <div className='max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-99'>
@@ -97,6 +114,7 @@ function NavBar() {
                   aria-label='sun'
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 24 24'
+                  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
                 >
                   <g
                     strokeLinejoin='round'
@@ -120,6 +138,7 @@ function NavBar() {
                   aria-label='moon'
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 24 24'
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 >
                   <g
                     strokeLinejoin='round'
