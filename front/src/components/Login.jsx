@@ -44,16 +44,18 @@ function Login() {
           </div>
           <button
             type='submit'
-            className='w-full bg-black text-white rounded-md py-1'
+            className='w-full bg-black text-white rounded-md py-1 cursor-pointer'
           >
             Login
           </button>
-          <button
-            variant='outline'
-            className='w-full outline rounded-md my-2 py-1'
-          >
-            Sign up
-          </button>
+          <a href='/Signup'>
+            <button
+              variant='outline'
+              className='w-full outline rounded-md my-2 py-1 cursor-pointer'
+            >
+              Sign up
+            </button>
+          </a>
         </div>
       </dialog>
     </div>

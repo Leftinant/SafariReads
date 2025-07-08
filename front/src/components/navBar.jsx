@@ -162,9 +162,9 @@ function NavBar() {
                 </svg>
               </label>
             </div>
-            <div className=''>
+            <div>
               <a
-                className='bg-yellow-600 text-white px-5 py-2 rounded-3xl hover:bg-slate-500 duration-1000 cursor-pointer'
+                className='bg-black text-white px-5 py-2 rounded-3xl hover:bg-slate-500 duration-1000 cursor-pointer'
                 onClick={() =>
                   document.getElementById("my_modal_3").showModal()
                 }
