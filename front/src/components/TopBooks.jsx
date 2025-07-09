@@ -35,6 +35,7 @@ function TopBooks() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: false,
         },
       },
     ],
@@ -51,7 +52,7 @@ function TopBooks() {
           <div className='w-full max-w-auto '>
             <Slider {...settings}>
               {filterData.map((item) => (
-                <Cards item={item} key={item.id} />
+                <Cards item={item} key={item.id} size='large' />
               ))}
             </Slider>
           </div>

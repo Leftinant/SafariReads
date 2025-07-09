@@ -83,6 +83,7 @@ function NavBar() {
                 {navItems}
               </ul>
             </div>
+            <img src='logo.png' className='w-15 mr-3' />
             <a className='text-2xl font-bold cursor-pointer'>Safari Reads</a>
           </div>
           <div className='navbar-end space-x-3'>
