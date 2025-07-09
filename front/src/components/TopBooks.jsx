@@ -43,13 +43,13 @@ function TopBooks() {
   return (
     <>
       <div className='max-w-screen-2xl container md:px-20 px-7 py-10 '>
-        <div className='md:flex items-center gap-1'>
-          <div className=' whitespace-nowrap w-12'>
-            <h1 className='md:transform md:rotate-270 font-semibold text-gray-700'>
+        <div className='md:flex items-center gap-1 '>
+          <div className=' whitespace-nowrap w-12 flex items-center justify-center'>
+            <h1 className='md:transform md:rotate-270 font-semibold text-gray-700 mr-10'>
               Top Rated
             </h1>
           </div>
-          <div className='w-full max-w-auto '>
+          <div className='w-full max-w-auto md:w-310'>
             <Slider {...settings}>
               {filterData.map((item) => (
                 <Cards item={item} key={item.id} size='large' />

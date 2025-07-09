@@ -1,20 +1,20 @@
 const Cards = ({ item, size = "small" }) => {
   // Size config
-  const cardWidth = size === "large" ? "w-85" : "w-[260px]";
-  const cardHeight = size === "large" ? "h-[250px]" : "h-[180px]";
+  const cardWidth = size === "large" ? "w-70" : "w-[260px]";
+  const cardHeight = size === "large" ? "h-60" : "h-[180px]";
   const imgWidth = size === "large" ? "w-40" : "w-[120px]";
   const imgHeight = cardHeight;
 
   return (
     <div className={`my-3 p-2 ${cardWidth}`}>
       <div
-        className={`card card-side hover:scale-105 duration-300 bg-white dark:bg-slate-900 dark:text-white shadow-md rounded-md overflow-hidden ${cardHeight}`}
+        className={`card card-side hover:scale-105 duration-300 bg-white dark:bg-slate-900 dark:text-white rounded-md overflow-hidden ${cardHeight}`}
       >
         <figure className={`${imgWidth} ${imgHeight} shrink-0`}>
           <img
             src={item.image}
             alt='book'
-            className='w-full h-full object-cover'
+            className='w-full h-full object-cover shadow-2xl '
           />
         </figure>
 
