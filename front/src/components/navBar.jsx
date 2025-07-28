@@ -51,7 +51,7 @@ function NavBar() {
 
   return (
     <>
-      <div className='max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-99 bg-white text-black dark:bg-slate-900 dark:text-white'>
+      <div className='max-w-screen container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-99 bg-white text-black dark:bg-slate-900 dark:text-white'>
         <div className='navbar shadow-sm  dark:bg-slate-900 dark:text-white  bg-white text-black'>
           <div className='navbar-start'>
             <div className='dropdown'>

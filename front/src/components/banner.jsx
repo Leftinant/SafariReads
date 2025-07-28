@@ -1,7 +1,7 @@
 function Banner() {
   return (
     <>
-      <div className='max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row pt-10 bg-white text-black dark:bg-slate-900 dark:text-white'>
+      <div className='max-w-screen container mx-auto md:px-20 px-4 flex flex-col md:flex-row pt-10 bg-white text-black dark:bg-slate-900 dark:text-white'>
         <div className='md:w-1/2 w-full '>
           <img
             src='/banner1.png'

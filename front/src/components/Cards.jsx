@@ -1,8 +1,8 @@
 const Cards = ({ item, size = "small" }) => {
   // Size config
-  const cardWidth = size === "large" ? "w-70" : "w-[260px]";
-  const cardHeight = size === "large" ? "h-60" : "h-[180px]";
-  const imgWidth = size === "large" ? "w-40" : "w-[120px]";
+  const cardWidth = size === "large" ? "w-80" : "w-70";
+  const cardHeight = size === "large" ? "h-60" : "h-45";
+  const imgWidth = size === "large" ? "w-40" : "w-35";
   const imgHeight = cardHeight;
 
   return (
@@ -18,7 +18,7 @@ const Cards = ({ item, size = "small" }) => {
           />
         </figure>
 
-        <div className='card-body p-3 flex flex-col justify-between w-full'>
+        <div className='card-body p-3 flex flex-col '>
           <div className='text-yellow-500 text-sm'>
             {"★".repeat(item.rating)}
             {"☆".repeat(5 - item.rating)}

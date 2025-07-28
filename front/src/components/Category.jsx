@@ -12,7 +12,7 @@ function Category() {
 
   return (
     <>
-      <div className='max-w-screen-2xl container mx-auto md:px-20 px-5 dark:bg-slate-900 dark:text-white  bg-white text-black'>
+      <div className='max-w-screen container mx-auto md:px-20 px-5 dark:bg-slate-900 dark:text-white  bg-white text-black'>
         <div className='pt-30 '>
           <h1 className='text-3xl font-semibold'>
             Begin Your Literary{" "}
