@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
-import bookRoute from "./route/book.route.js";
-import userRoute from "./route/user.route.js";
+import bookRoute from "./routes/BookRoutes.js";
+import userRoute from "./routes/UserRoutes.js";
 
 const app = express();
 

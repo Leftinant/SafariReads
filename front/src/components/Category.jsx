@@ -1,5 +1,15 @@
 import Cards from "./Cards";
-import list from "../assets/list.json";
+
+const list = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/list")
+      .then((res) => setItems(res.data))
+      .catch((err) => console.error("Error fetching list:", err));
+  }, []);
+};
 
 function Category() {
   const fictionData = list.filter((data) => data.category === "Fiction");

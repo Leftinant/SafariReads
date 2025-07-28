@@ -34,4 +34,4 @@ Safari Reads isn’t just a bookstore — it's a literary journey. With a fast, 
 
 `bash
 git clone https://[https://github.com/Leftinant/SafariReads.git]
-cd SafariReads
+cd SafariReads`

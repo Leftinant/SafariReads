@@ -1,12 +1,8 @@
 import mongoose from "mongoose";
 
-const bookSchema = mongoose.Schema({
+const listItemSchema = new mongoose.Schema({
   name: String,
-  price: Number,
-  category: String,
-  image: String,
-  title: String,
+  value: Number,
 });
-const Book = mongoose.model("Book", bookSchema);
 
-export default Book;
+export default mongoose.model("ListItem", listItemSchema);
