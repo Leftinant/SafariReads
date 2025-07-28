@@ -23,9 +23,11 @@ function Banner() {
               journey. Where will yours take you today ?
             </p>
           </div>
-          <button className='bg-yellow-600 btn btn-secondary border-none mt-10 hover:bg-yellow-200 hover:text-yellow-600 duration-1000 cursor-pointer px-10 rounded-xl'>
-            Buy Now
-          </button>
+          <a href='/category'>
+            <button className='bg-yellow-600 btn btn-secondary border-none mt-10 hover:bg-yellow-200 hover:text-yellow-600 duration-1000 cursor-pointer px-10 rounded-xl'>
+              Buy Now
+            </button>
+          </a>
         </div>
       </div>
     </>

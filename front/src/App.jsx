@@ -1,7 +1,7 @@
-import Home from "./home/home";
 import { Route, Routes } from "react-router-dom";
-import Categories from "./assets/categories/Categories";
+import Categories from "./pages/Categories";
 import Signup from "./components/Signup";
+import Home from "./pages/Home";
 
 function App() {
   return (
