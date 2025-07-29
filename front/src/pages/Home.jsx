@@ -6,10 +6,12 @@ import TopBooks from "../components/TopBooks";
 function Home() {
   return (
     <>
-      <NavBar />
-      <Banner />
-      <TopBooks />
-      <Footer />
+      <div className='flex-1 flex flex-col overflow-hidden'>
+        <NavBar />
+        <Banner />
+        <TopBooks />
+        <Footer />
+      </div>
     </>
   );
 }

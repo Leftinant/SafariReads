@@ -1,24 +1,25 @@
 import Cards from "./Cards";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const list = () => {
+function Category() {
   const [items, setItems] = useState([]);
+  const base = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/list")
+      .get(`${base}/api/book`)
       .then((res) => setItems(res.data))
-      .catch((err) => console.error("Error fetching list:", err));
+      .catch((err) => console.error("Error fetching items:", err));
   }, []);
-};
 
-function Category() {
-  const fictionData = list.filter((data) => data.category === "Fiction");
-  const comedyData = list.filter((data) => data.category === "Comedy");
-  const historyData = list.filter((data) => data.category === "History");
-  const horrorData = list.filter((data) => data.category === "Thriller");
-  const kenyaData = list.filter((data) => data.category === "Kenyan");
-  const scienceData = list.filter((data) => data.category === "Science");
-  const bioData = list.filter((data) => data.category === "Biography");
+  const fictionData = items.filter((data) => data.category === "Fiction");
+  const comedyData = items.filter((data) => data.category === "Comedy");
+  const historyData = items.filter((data) => data.category === "History");
+  const horrorData = items.filter((data) => data.category === "Thriller");
+  const kenyaData = items.filter((data) => data.category === "Kenyan");
+  const scienceData = items.filter((data) => data.category === "Science");
+  const bioData = items.filter((data) => data.category === "Biography");
 
   return (
     <>

@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
 
 const listItemSchema = new mongoose.Schema({
-  name: String,
-  value: Number,
+  title: String,
+  author: String,
+  rating: Number,
+  category: String,
+  image: String,
+  price: String,
 });
 
-export default mongoose.model("ListItem", listItemSchema);
+export default mongoose.model("books", listItemSchema);

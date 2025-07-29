@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Login from "./Login";
+import { AuthContext } from "../context/AuthContext";
 
 function NavBar() {
+  const { user } = useContext(AuthContext);
+
   localStorage.removeItem("theme");
   const [theme, setTheme] = useState(() => {
     if (localStorage.theme) return localStorage.theme;
@@ -163,17 +166,63 @@ function NavBar() {
                 </svg>
               </label>
             </div>
-            <div>
-              <a
-                className='bg-black text-white px-5 py-2 rounded-3xl hover:bg-slate-500 duration-1000 cursor-pointer'
-                onClick={() =>
-                  document.getElementById("my_modal_3").showModal()
-                }
-              >
-                Login
-              </a>
-              <Login />
-            </div>
+            {!user ? (
+              <>
+                <a
+                  onClick={() =>
+                    document.getElementById("my_modal_3").showModal()
+                  }
+                >
+                  <button className='btn bg-yellow-500 hover:bg-yellow-700 mx-3 rounded-2xl '>
+                    Login
+                  </button>
+                </a>
+                <Login />
+              </>
+            ) : (
+              <div className='dropdown dropdown-end'>
+                <div
+                  tabIndex={0}
+                  role='button'
+                  className='btn btn-ghost btn-circle avatar'
+                >
+                  <div className='w-10 rounded-full'>
+                    <img
+                      alt='User avatar'
+                      src={
+                        user.avatar ||
+                        "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                      }
+                    />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow'
+                >
+                  <li>
+                    <a className='justify-between'>
+                      Profile
+                      <span className='badge'>New</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>Settings</a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() => {
+                        localStorage.removeItem("token");
+                        localStorage.removeItem("user");
+                        window.location.reload();
+                      }}
+                    >
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
