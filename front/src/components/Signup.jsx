@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Login from "./Login";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 function Signup() {
+  const base = import.meta.env.VITE_API_BASE_URL;
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,16 +21,37 @@ function Signup() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
+      toast("Passwords do not match!");
       return;
     }
 
-    // Submit the data (e.g., to Firebase or your backend)
-    console.log("Form Data:", formData);
+    try {
+      const res = await axios.post(`${base}/api/user/register`, {
+        fullname: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      const token = res.data.token;
+      localStorage.setItem("token", token);
+
+      console.log("Registration successful");
+      toast.success("Account created!");
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+      document.getElementById("my_modal_3").showModal();
+    } catch (error) {
+      console.error("Registration failed:", error.response?.data || error);
+      toast.error("Something went wrong", "error");
+    }
   };
 
   return (
@@ -60,41 +85,104 @@ function Signup() {
             <form onSubmit={handleSubmit} className='space-y-4'>
               <div className='form-control'>
                 <label className='text-sm'>Name</label>
-                <input
-                  type='text'
-                  name='name'
-                  className=' input border-primary-content w-full rounded-2xl px-3 text-l'
-                  placeholder='Full Name'
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
+                <label className='input validator rounded-2xl'>
+                  <svg
+                    className='h-[1em] opacity-50'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 24 24'
+                  >
+                    <g
+                      strokeLinejoin='round'
+                      strokeLinecap='round'
+                      strokeWidth='2.5'
+                      fill='none'
+                      stroke='currentColor'
+                    >
+                      <path d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'></path>
+                      <circle cx='12' cy='7' r='4'></circle>
+                    </g>
+                  </svg>
+                  <input
+                    type='text'
+                    name='name'
+                    required
+                    placeholder='Username'
+                    pattern='[A-Za-z][A-Za-z0-9\-]*'
+                    minLength='3'
+                    maxLength='30'
+                    title='Only letters, numbers or dash'
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                </label>
               </div>
 
               <div className='form-control'>
                 <label className='text-sm'>Email</label>
-                <input
-                  type='email'
-                  name='email'
-                  className='input border-primary-content w-full rounded-2xl p-3 text-l'
-                  placeholder='me@example.com'
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+                <label className='input validator rounded-2xl'>
+                  <svg
+                    className='h-[1em] opacity-50'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 24 24'
+                  >
+                    <g
+                      strokeLinejoin='round'
+                      strokeLinecap='round'
+                      strokeWidth='2.5'
+                      fill='none'
+                      stroke='currentColor'
+                    >
+                      <rect width='20' height='16' x='2' y='4' rx='2'></rect>
+                      <path d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'></path>
+                    </g>
+                  </svg>
+                  <input
+                    type='email'
+                    name='email'
+                    placeholder='mail@site.com'
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </label>
               </div>
 
               <div className='form-control'>
                 <label className='text-sm'>Password</label>
-                <input
-                  type='password'
-                  name='password'
-                  className='input border-primary-content w-full rounded-2xl p-3 text-l'
-                  placeholder='••••••••'
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                />
+                <label className='input validator rounded-2xl'>
+                  <svg
+                    className='h-[1em] opacity-50'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 24 24'
+                  >
+                    <g
+                      strokeLinejoin='round'
+                      strokeLinecap='round'
+                      strokeWidth='2.5'
+                      fill='none'
+                      stroke='currentColor'
+                    >
+                      <path d='M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z'></path>
+                      <circle
+                        cx='16.5'
+                        cy='7.5'
+                        r='.5'
+                        fill='currentColor'
+                      ></circle>
+                    </g>
+                  </svg>
+                  <input
+                    type='password'
+                    name='password'
+                    required
+                    placeholder='Password'
+                    minLength='8'
+                    pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
+                    title='Must be more than 8 characters, including number, lowercase letter, uppercase letter'
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                </label>
                 <p className='w-full text-xs pl-2 pt-2 text-gray-700'>
                   Use 8 or more letters, numbers and symbols
                 </p>
@@ -102,15 +190,40 @@ function Signup() {
 
               <div className='form-control'>
                 <label className='text-sm'>Confirm Password</label>
-                <input
-                  type='password'
-                  name='confirmPassword'
-                  className='input border-primary-content w-full rounded-2xl p-3 text-l'
-                  placeholder='••••••••'
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  required
-                />
+                <label className='input validator rounded-2xl mb-5'>
+                  <svg
+                    className='h-[1em] opacity-50'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 24 24'
+                  >
+                    <g
+                      strokeLinejoin='round'
+                      strokeLinecap='round'
+                      strokeWidth='2.5'
+                      fill='none'
+                      stroke='currentColor'
+                    >
+                      <path d='M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z'></path>
+                      <circle
+                        cx='16.5'
+                        cy='7.5'
+                        r='.5'
+                        fill='currentColor'
+                      ></circle>
+                    </g>
+                  </svg>
+                  <input
+                    type='password'
+                    name='confirmPassword'
+                    required
+                    placeholder='Confirm'
+                    minLength='8'
+                    pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
+                    title='Must be more than 8 characters, including number, lowercase letter, uppercase letter'
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                  />
+                </label>
               </div>
               <div className='form-control'>
                 <button

@@ -1,48 +1,53 @@
-import { useForm } from "react-hook-form";
+import { useState, useContext } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
   const base = import.meta.env.VITE_API_BASE_URL;
 
-  const onSubmit = async (data) => {
-    const userInfo = {
-      email: data.email,
-      password: data.password,
-    };
-    await axios
-      .post("http://localhost:4001/user/login", userInfo)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data) {
-          toast.success("Loggedin Successfully");
-          document.getElementById("my_modal_3").close();
-          setTimeout(() => {
-            window.location.reload();
-            localStorage.setItem("Users", JSON.stringify(res.data.user));
-          }, 1000);
-        }
-      })
-      .catch((err) => {
-        if (err.response) {
-          console.log(err);
-          toast.error("Error: " + err.response.data.message);
-          setTimeout(() => {}, 2000);
-        }
-      });
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`${base}/api/user/login`, formData);
+      const { token, user } = res.data;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      setUser(user);
+      navigate("/");
+
+      toast.success("Login successful!");
+      document.getElementById("my_modal_3").close();
+    } catch (err) {
+      console.error("Login error:", err);
+      toast.error(err.response?.data?.message || "Login failed", "error");
+    }
   };
 
   return (
     <div>
       <dialog id='my_modal_3' className='modal'>
         <div className='modal-box md:w-110 md:px-20 w-auto px-10 mx-10 rounded-3xl dark:bg-slate-900'>
-          <form method='dialog' onSubmit={handleSubmit(onSubmit)}>
-            <button className='px-2 absolute text-xl text-gray-500 right-2 top-2 cursor-pointer hover:text-black dark:hover:text-white'>
+          <form onSubmit={handleSubmit}>
+            <button
+              type='button'
+              className='px-2 absolute text-xl text-gray-500 right-2 top-2 cursor-pointer hover:text-black'
+              onClick={() => document.getElementById("my_modal_3").close()}
+            >
               ✕
             </button>
           </form>
@@ -53,12 +58,32 @@ function Login() {
           <div className='flex flex-col gap-6'>
             <div className='grid'>
               <label htmlFor='email'>Email</label>
-              <input
-                type='email'
-                placeholder='me@example.com'
-                className='outline-none border border-gray-300 rounded-2xl p-3 text-l'
-                {...register("email", { required: true })}
-              />
+              <label className='input validator rounded-2xl'>
+                <svg
+                  className='h-[1em] opacity-50'
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 24 24'
+                >
+                  <g
+                    strokeLinejoin='round'
+                    strokeLinecap='round'
+                    strokeWidth='2.5'
+                    fill='none'
+                    stroke='currentColor'
+                  >
+                    <rect width='20' height='16' x='2' y='4' rx='2'></rect>
+                    <path d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'></path>
+                  </g>
+                </svg>
+                <input
+                  type='email'
+                  name='email'
+                  placeholder='mail@site.com'
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </label>
             </div>
             <div className='grid'>
               <div className='flex'>
@@ -70,12 +95,40 @@ function Login() {
                   Forgot your password?
                 </a>
               </div>
-              <input
-                type='password'
-                placeholder='Password'
-                className='outline-none border border-gray-300 rounded-2xl p-3 text-l mb-7'
-                {...register("password", { required: true })}
-              />
+              <label className='input validator rounded-2xl mb-5'>
+                <svg
+                  className='h-[1em] opacity-50'
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 24 24'
+                >
+                  <g
+                    strokeLinejoin='round'
+                    strokeLinecap='round'
+                    strokeWidth='2.5'
+                    fill='none'
+                    stroke='currentColor'
+                  >
+                    <path d='M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z'></path>
+                    <circle
+                      cx='16.5'
+                      cy='7.5'
+                      r='.5'
+                      fill='currentColor'
+                    ></circle>
+                  </g>
+                </svg>
+                <input
+                  type='password'
+                  name='password'
+                  required
+                  placeholder='Password'
+                  minLength='8'
+                  pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
+                  title='Must be more than 8 characters, including number, lowercase letter, uppercase letter'
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+              </label>
             </div>
           </div>
           <button
