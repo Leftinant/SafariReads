@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import Login from "./Login";
 import { AuthContext } from "../context/AuthContext";
+import Cart from "./Cart";
 
 function NavBar() {
   const { user } = useContext(AuthContext);
@@ -41,12 +42,7 @@ function NavBar() {
       </li>
       <li>
         <b>
-          <a>ABOUT US</a>
-        </b>
-      </li>
-      <li>
-        <b>
-          <a>CONTACT</a>
+          <a href='/contact'>CONTACT US</a>
         </b>
       </li>
     </>
@@ -89,12 +85,14 @@ function NavBar() {
             <img src='logo.png' className='w-15 mr-3' />
             <a className='text-2xl font-bold cursor-pointer'>Safari Reads</a>
           </div>
-          <div className='navbar-end space-x-3'>
-            <div className='navbar-center hidden lg:flex'>
-              <ul className='menu menu-horizontal px-1'>{navItems}</ul>
-            </div>
+
+          <div className='navbar-center hidden lg:flex'>
+            <ul className='menu menu-horizontal px-1'>{navItems}</ul>
+          </div>
+
+          <div className='navbar-end md:space-x-5'>
             <div className='hidden md:block'>
-              <label className='px-3 py-1 border rounded-2xl flex items-center gap-2'>
+              <label className='px-3 py-1 border-b-2 rounded-2xl flex items-center gap-2'>
                 <svg
                   className='h-[1em] opacity-50'
                   xmlns='http://www.w3.org/2000/svg'
@@ -118,7 +116,7 @@ function NavBar() {
                 />
               </label>
             </div>
-            <div>
+            <div className='hidden md:block'>
               <label className='toggle text-base-content'>
                 <input
                   type='checkbox'
@@ -180,47 +178,49 @@ function NavBar() {
                 <Login />
               </>
             ) : (
-              <div className='dropdown dropdown-end'>
-                <div
-                  tabIndex={0}
-                  role='button'
-                  className='btn btn-ghost btn-circle avatar'
-                >
-                  <div className='w-10 rounded-full'>
-                    <img
-                      alt='User avatar'
-                      src={
-                        user.avatar ||
-                        "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                      }
-                    />
-                  </div>
+              <div className='flex items-center space-x-4'>
+                <div className='dropdown dropdown-end'>
+                  <label
+                    tabIndex={0}
+                    className='btn btn-ghost btn-circle avatar'
+                  >
+                    <div className='w-10 rounded-full'>
+                      <i className='fas fa-user md:text-2xl mt-3'></i>
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
+                  >
+                    <li>
+                      <a className='justify-between'>
+                        Profile <span className='badge'>New</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        onClick={() => {
+                          localStorage.removeItem("token");
+                          localStorage.removeItem("user");
+                          window.location.reload();
+                        }}
+                      >
+                        Logout
+                      </a>
+                    </li>
+                  </ul>
                 </div>
-                <ul
-                  tabIndex={0}
-                  className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow'
+
+                <div
+                  className='cursor-pointer mt-3 flex items-center'
+                  onClick={() =>
+                    document.getElementById("my_modal_2").showModal()
+                  }
                 >
-                  <li>
-                    <a className='justify-between'>
-                      Profile
-                      <span className='badge'>New</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a>Settings</a>
-                  </li>
-                  <li>
-                    <a
-                      onClick={() => {
-                        localStorage.removeItem("token");
-                        localStorage.removeItem("user");
-                        window.location.reload();
-                      }}
-                    >
-                      Logout
-                    </a>
-                  </li>
-                </ul>
+                  <span className='mr-2'>My Cart</span>
+                  <i className='fas fa-cart-shopping md:text-2xl ml-1'></i>
+                </div>
+                <Cart />
               </div>
             )}
           </div>

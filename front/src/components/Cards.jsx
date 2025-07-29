@@ -1,13 +1,13 @@
 const Cards = ({ item, size = "small" }) => {
   const ICONS = [
     { icon: "fas fa-heart", label: "Wishlist", delay: 300 },
-    { icon: "fas fa-cart-shopping", label: "Add to Cart", delay: 200 },
-    { icon: "fas fa-eye", label: "Buy", delay: 100 },
+    { icon: "fas fa-shopping-bag", label: "Add to Cart", delay: 200 },
+    { icon: "fas fa-money-bill-1", label: "Buy", delay: 100 },
   ];
 
   return (
     <div
-      className={`max-w-xs group w-50 relative  rounded overflow-hidden bg-white  dark:bg-slate-900 dark:text-white`}
+      className={`max-w-xs group w-40 relative  rounded overflow-hidden bg-white  dark:bg-slate-900 dark:text-white`}
     >
       <div className='relative overflow-hidden'>
         <img src={item.image} alt='Book Cover' className='w-full h-auto ' />
@@ -34,10 +34,10 @@ const Cards = ({ item, size = "small" }) => {
       </div>
 
       <div className='p-4'>
-        <p className='text-lg text-gray-500'>{item.author}</p>
-        <h2 className='text-xl font-bold my-2'>{item.title}</h2>
-        <h3 classNameName='text-lg text-gray-500 font-semibold'>
-          KSh{item.price}
+        <p className='text-sm text-gray-500'>{item.author}</p>
+        <h2 className='text-lg font-bold my-2'>{item.title}</h2>
+        <h3 className='text-sm text-gray-500 font-semibold'>
+          KSh {item.price}
         </h3>
       </div>
     </div>

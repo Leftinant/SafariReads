@@ -60,7 +60,7 @@ function TopBooks() {
               Top Rated
             </h1>
           </div>
-          <div className='md:w-400 w-full'>
+          <div className='md:w-400 w-full mt-5'>
             <Slider {...settings}>
               {filterData.map((item) => (
                 <Cards item={item} key={item.id} />

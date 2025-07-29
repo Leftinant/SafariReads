@@ -8,8 +8,9 @@ function Footer() {
         <a className='link link-hover' href='/category'>
           Catalogue
         </a>
-        <a className='link link-hover'>About</a>
-        <a className='link link-hover'>Contact</a>
+        <a className='link link-hover' href='/contact'>
+          Contact Us
+        </a>
       </nav>
       <nav>
         <div className='grid grid-flow-col gap-4'>
