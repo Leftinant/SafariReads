@@ -1,16 +1,27 @@
 import Slider from "react-slick";
 import Cards from "./Cards";
-import list from "../assets/list.json";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function TopBooks() {
-  const filterData = list.filter((data) => data.rating === "5");
+  const [items, setItems] = useState([]);
+  const base = import.meta.env.VITE_API_BASE_URL;
+
+  useEffect(() => {
+    axios
+      .get(`${base}/api/book`)
+      .then((res) => setItems(res.data))
+      .catch((err) => console.error("Error fetching items:", err));
+  }, []);
+
+  const filterData = items.filter((data) => data.rating === 5);
 
   var settings = {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     initialSlide: 0,
     responsive: [
       {
@@ -52,7 +63,7 @@ function TopBooks() {
           <div className='md:w-400 w-full'>
             <Slider {...settings}>
               {filterData.map((item) => (
-                <Cards item={item} key={item.id} size='large' />
+                <Cards item={item} key={item.id} />
               ))}
             </Slider>
           </div>

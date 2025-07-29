@@ -35,46 +35,46 @@ function Category() {
           </p>
         </div>
         <div>
-          <h1 className='font-semibold text-xl'>Fiction</h1>
-          <div className='grid md:grid-cols-5'>
+          <h1 className='font-semibold text-4xl my-5'>Fiction</h1>
+          <div className='grid md:grid-cols-6'>
             {fictionData.map((item) => (
-              <Cards item={item} key={item.id} size='small' />
+              <Cards item={item} key={item.id} />
             ))}
           </div>
-          <h1 className='font-semibold text-xl'>Comedy</h1>
-          <div className='grid md:grid-cols-5'>
+          <h1 className='font-semibold text-4xl my-5'>Comedy</h1>
+          <div className='grid md:grid-cols-6'>
             {comedyData.map((item) => (
-              <Cards item={item} key={item.id} size='small' />
+              <Cards item={item} key={item.id} />
             ))}
           </div>
-          <h1 className='font-semibold text-xl'>History</h1>
-          <div className='grid md:grid-cols-5'>
+          <h1 className='font-semibold text-4xl my-5'>History</h1>
+          <div className='grid md:grid-cols-6'>
             {historyData.map((item) => (
-              <Cards item={item} key={item.id} size='small' />
+              <Cards item={item} key={item.id} />
             ))}
           </div>
-          <h1 className='font-semibold text-xl'>Thriller</h1>
-          <div className='grid md:grid-cols-5'>
+          <h1 className='font-semibold text-4xl my-5'>Thriller</h1>
+          <div className='grid md:grid-cols-6'>
             {horrorData.map((item) => (
-              <Cards item={item} key={item.id} size='small' />
+              <Cards item={item} key={item.id} />
             ))}
           </div>
-          <h1 className='font-semibold text-xl'>Kenyan</h1>
-          <div className='grid md:grid-cols-5'>
+          <h1 className='font-semibold text-4xl my-5'>Kenyan</h1>
+          <div className='grid md:grid-cols-6'>
             {kenyaData.map((item) => (
-              <Cards item={item} key={item.id} size='small' />
+              <Cards item={item} key={item.id} />
             ))}
           </div>
-          <h1 className='font-semibold text-xl'>Science</h1>
-          <div className='grid md:grid-cols-5'>
+          <h1 className='font-semibold text-4xl my-5'>Science</h1>
+          <div className='grid md:grid-cols-6'>
             {scienceData.map((item) => (
-              <Cards item={item} key={item.id} size='small' />
+              <Cards item={item} key={item.id} />
             ))}
           </div>
-          <h1 className='font-semibold text-xl'>Biography</h1>
-          <div className='grid md:grid-cols-5'>
+          <h1 className='font-semibold text-4xl my-5'>Biography</h1>
+          <div className='grid md:grid-cols-6'>
             {bioData.map((item) => (
-              <Cards item={item} key={item.id} size='small' />
+              <Cards item={item} key={item.id} />
             ))}
           </div>
         </div>

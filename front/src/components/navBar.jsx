@@ -31,22 +31,22 @@ function NavBar() {
     <>
       <li>
         <b>
-          <a href='/'>Home</a>
+          <a href='/'>HOME</a>
         </b>
       </li>
       <li>
         <b>
-          <a href='/category'>Library</a>
+          <a href='/category'>CATALOGUE</a>
         </b>
       </li>
       <li>
         <b>
-          <a>Contact</a>
+          <a>ABOUT US</a>
         </b>
       </li>
       <li>
         <b>
-          <a>About</a>
+          <a>CONTACT</a>
         </b>
       </li>
     </>
