@@ -6,7 +6,7 @@ const listItemSchema = new mongoose.Schema({
   rating: Number,
   category: String,
   image: String,
-  price: String,
+  price: Number,
 });
 
 export default mongoose.model("books", listItemSchema);

@@ -25,13 +25,8 @@ function Banner() {
           </div>
           <div className='flex gap-5'>
             <a href='/category'>
-              <button className='bg-yellow-600 btn  mt-10 hover:bg-yellow-500/10 hover:text-yellow-600 duration-1000 cursor-pointer p-5 rounded-full shadow-2xl'>
-                Get Started
-              </button>
-            </a>
-            <a href='/category'>
-              <button className=' btn btn-outline  mt-10 text-yellow-600 hover:bg-yellow-600/10 hover:text-yellow-600 duration-1000 cursor-pointer p-5  rounded-full'>
-                Learn More
+              <button className='bg-yellow-600 btn  mt-10 hover:bg-yellow-500/10 hover:text-yellow-600 duration-1000 cursor-pointer p-7 rounded-4xl shadow-2xl'>
+                Browse Store
               </button>
             </a>
           </div>

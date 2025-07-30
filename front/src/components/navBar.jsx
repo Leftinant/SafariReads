@@ -37,12 +37,12 @@ function NavBar() {
       </li>
       <li>
         <b>
-          <a href='/category'>CATALOGUE</a>
+          <a href='/category'>CATEGORIES</a>
         </b>
       </li>
       <li>
         <b>
-          <a href='/contact'>CONTACT US</a>
+          <a href='/contact'>CONTACT</a>
         </b>
       </li>
     </>

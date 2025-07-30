@@ -6,10 +6,10 @@ function Footer() {
           Home
         </a>
         <a className='link link-hover' href='/category'>
-          Catalogue
+          Categories
         </a>
         <a className='link link-hover' href='/contact'>
-          Contact Us
+          Contact
         </a>
       </nav>
       <nav>

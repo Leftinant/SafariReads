@@ -32,7 +32,7 @@ function Login() {
       document.getElementById("my_modal_3").close();
     } catch (err) {
       console.error("Login error:", err);
-      toast.error(err.response?.data?.message || "Login failed", "error");
+      toast.error(err.response?.data?.message || "Login failed");
     }
   };
 

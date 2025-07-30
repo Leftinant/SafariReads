@@ -3,25 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Category() {
-  const [items, setItems] = useState([]);
   const base = import.meta.env.VITE_API_BASE_URL;
-  const [filter, setFilter] = useState("All");
 
-  const categories = [
-    "All",
-    "Fiction",
-    "Comedy",
-    "History",
-    "Thriller",
-    "Kenyan",
-    "Science",
-    "Biography",
-  ];
-
-  const getCount = (category) => {
-    if (category === "All") return items.length;
-    return items.filter((book) => book.category === category).length;
-  };
+  const [items, setItems] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState("All");
+  const [ratingFilter, setRatingFilter] = useState("All");
+  const [priceFilter, setPriceFilter] = useState("All");
+  const [availabilityFilter, setAvailabilityFilter] = useState("All");
 
   useEffect(() => {
     axios
@@ -30,8 +18,23 @@ function Category() {
       .catch((err) => console.error("Error fetching items:", err));
   }, []);
 
-  const filteredItems =
-    filter === "All" ? items : items.filter((item) => item.category === filter);
+  const filteredItems = items.filter((item) => {
+    const categoryMatch =
+      categoryFilter === "All" || item.category === categoryFilter;
+    const ratingMatch =
+      ratingFilter === "All" || item.rating === parseInt(ratingFilter);
+    const priceMatch =
+      priceFilter === "All" ||
+      (priceFilter === "<500" && item.price < 500) ||
+      (priceFilter === "500-1000" && item.price >= 500 && item.price <= 1000) ||
+      (priceFilter === ">1000" && item.price > 1000);
+    const availabilityMatch =
+      availabilityFilter === "All" ||
+      (availabilityFilter === "in" && item.available === true) ||
+      (availabilityFilter === "out" && item.available === false);
+
+    return categoryMatch && ratingMatch && priceMatch && availabilityMatch;
+  });
 
   return (
     <>
@@ -55,21 +58,48 @@ function Category() {
             <h1 className='font-semibold text-2xl my-5'>FILTERS</h1>
             <div className='border-t-1 py-4'>
               <h2 className='text-xl  font-semibold'>Categories</h2>
-              <div className='mb-4 text-lg w-full'>
-                {categories.map((cat) => (
-                  <label key={cat} className='w-full flex items-center gap-2'>
+              <div className='mb-4 text-lg w-full '>
+                {[
+                  "All",
+                  "Biography",
+                  "Comedy",
+                  "Fiction",
+                  "History",
+                  "Kenyan",
+                  "Science",
+                  "Thriller",
+                ].map((option) => (
+                  <label key={option}>
+                    <br />
                     <input
                       type='radio'
                       name='category'
-                      value={cat}
-                      checked={filter === cat}
-                      onChange={() => setFilter(cat)}
-                      className='my-1 mx-3'
+                      value={option}
+                      checked={categoryFilter === option}
+                      onChange={() => setCategoryFilter(option)}
+                      className='md:mx-3 '
                     />
-                    {cat}
-                    <span className='ml-auto mr-3 w-5 h-5 rounded-full badge badge-sm badge-outline'>
-                      {getCount(cat)}
-                    </span>
+                    {option}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className='border-t-1 py-4'>
+              <h2 className='text-xl  font-semibold'>Rating</h2>
+              <div className='mb-4 text-lg w-full'>
+                {["All", "1", "2", "3", "4", "5"].map((option) => (
+                  <label key={option}>
+                    <br />
+                    <input
+                      type='radio'
+                      name='rating'
+                      value={option}
+                      checked={ratingFilter === option}
+                      onChange={() => setRatingFilter(option)}
+                      className='md:mx-3'
+                    />
+                    {option === "All" ? "All" : `${option} Star Rating`}
                   </label>
                 ))}
               </div>
@@ -77,13 +107,73 @@ function Category() {
 
             <div className='border-t-1 py-4'>
               <h2 className='text-xl  font-semibold'>Price</h2>
+              <div className='mb-4 text-lg w-full'>
+                {["All", "<500", "500-1000", ">1000"].map((option) => (
+                  <label key={option}>
+                    <br />
+                    <input
+                      type='radio'
+                      name='price'
+                      value={option}
+                      checked={priceFilter === option}
+                      onChange={() => setPriceFilter(option)}
+                      className='md:mx-3'
+                    />
+                    {option === "<500"
+                      ? "Below 500"
+                      : option === "500-1000"
+                      ? "From 500 to 1000"
+                      : option === ">1000"
+                      ? "Above 1000"
+                      : "All"}
+                  </label>
+                ))}
+              </div>
             </div>
             <div className='border-t-1 py-4'>
               <h2 className='text-xl  font-semibold'>Availability</h2>
+              <div className='mb-4 text-lg w-full'>
+                {[
+                  { label: "All", value: "All" },
+                  { label: "In Stock", value: "in" },
+                  { label: "Out of Stock", value: "out" },
+                ].map(({ label, value }) => (
+                  <label key={value}>
+                    <br />
+                    <input
+                      type='radio'
+                      name='availability'
+                      value={value}
+                      checked={availabilityFilter === value}
+                      onChange={() => setAvailabilityFilter(value)}
+                      className='md:mx-3'
+                    />
+                    {label}
+                  </label>
+                ))}
+              </div>
             </div>
           </div>
 
           <div className='p-5 w-full'>
+            <div className='w-full justify-end'>
+              <div className='dropdown dropdown-start'>
+                <div tabIndex={0} role='button' className='btn rounded'>
+                  Click <i className='fas fa-arrow-down'></i>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className='dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm'
+                >
+                  <li>
+                    <a>Item 1</a>
+                  </li>
+                  <li>
+                    <a>Item 2</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <div className='grid md:grid-cols-6 '>
               {filteredItems.map((item) => (
                 <Cards item={item} key={item.id} className='mx-auto' />
