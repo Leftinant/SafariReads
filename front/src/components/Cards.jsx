@@ -1,47 +1,64 @@
 import toast from "react-hot-toast";
 
+const ICONS = [
+  {
+    icon: "far fa-heart",
+    label: "Wishlist",
+    delay: 300,
+  },
+  {
+    icon: "fas fa-basket-shopping",
+    label: "Add to Cart",
+    delay: 200,
+  },
+  {
+    icon: "far fa-handshake",
+    label: "Buy",
+    delay: 100,
+  },
+];
+
 const Cards = ({ item, size = "small" }) => {
-  const handleBuy = async (e) => {
-    try {
-      toast.success(
-        `Successfully Purchased. $(<br />) Book Title:${item.title}`
-      );
-    } catch (err) {
-      console.error("Purchase Failed:", err);
-      toast.error(err.response?.data?.message || "Purchase Failed");
-    }
+  const handleAddToCart = (book) => {
+    const existing = JSON.parse(localStorage.getItem("cart")) || [];
+    const updated = [...existing, book];
+    localStorage.setItem("cart", JSON.stringify(updated));
+    toast.success(`Added "${book.title}" to cart.`);
   };
 
-  const ICONS = [
-    {
-      icon: "fas fa-heart",
-      label: "Wishlist",
-      delay: 300,
-      // click: ,
-    },
-    {
-      icon: "fas fa-shopping-bag",
-      label: "Add to Cart",
-      delay: 200,
-      // click: ,
-    },
-    {
-      icon: "fas fa-money-bill-1",
-      label: "Buy",
-      delay: 100,
-      click: handleBuy,
-    },
-  ];
+  const handleAddToWishlist = (book) => {
+    toast.success(`Added "${book.title}" to wishlist.`);
+  };
 
+  const handleBuy = (book) => {
+    toast.success(`Buying "${book.title}" now...`);
+    // Implement buy logic
+  };
+
+  const handleIconClick = (label, book) => {
+    switch (label) {
+      case "Add to Cart":
+        handleAddToCart(book);
+        break;
+      case "Wishlist":
+        handleAddToWishlist(book);
+        break;
+      case "Buy":
+        handleBuy(book);
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <div
-      className={`max-w-xs group w-40 relative md:w-50 rounded overflow-hidden bg-white  dark:bg-slate-900 dark:text-white`}
+      className={`max-w-xs group w-60 rounded overflow-hidden bg-white  dark:bg-slate-900 dark:text-white`}
     >
       <div className='relative overflow-hidden'>
         <img src={item.image} alt='Book Cover' className='w-full h-auto ' />
 
-        <div className='absolute inset-0 bg-black/30 flex flex-col items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-1000 '>
-          {ICONS.map(({ icon, label, delay, click }, idx) => (
+        <div className='absolute inset-0 bg-black/30 flex flex-col items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-1000 gr'>
+          {ICONS.map(({ icon, label, delay }, idx) => (
             <div
               key={idx}
               className={`relative flex items-center group/icon transform translate-x-20 group-hover:translate-x-0 transition duration-1000`}
@@ -54,8 +71,8 @@ const Cards = ({ item, size = "small" }) => {
 
               {/* Icon Button */}
               <button
-                className='bg-yellow-600 text-white p-2 rounded-full shadow hover:bg-black w-9 h-9 m-2 flex items-center justify-center'
-                onClick={click}
+                className='bg-yellow-600 text-white p-2 rounded-full shadow hover:bg-black w-9 h-9 m-2 flex items-center justify-center cursor-pointer'
+                onClick={() => handleIconClick(label, item)}
               >
                 <i className={icon}></i>
               </button>
@@ -68,7 +85,7 @@ const Cards = ({ item, size = "small" }) => {
         <h2 className='text-lg font-bold my-2'>{item.title}</h2>
         <p className='text-sm text-gray-500'>{item.author}</p>
         <div className='flex mt-3'>
-          <div className='rating rating-xs mr-7'>
+          <div className='rating rating-xs mr-17'>
             {[1, 2, 3, 4, 5].map((i) => (
               <input
                 key={i}

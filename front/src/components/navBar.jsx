@@ -5,6 +5,15 @@ import Cart from "./Cart";
 
 function NavBar() {
   const { user } = useContext(AuthContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      const stored = JSON.parse(localStorage.getItem("cart")) || [];
+      setCartItems(stored);
+    }
+  }, [isModalOpen]);
 
   localStorage.removeItem("theme");
   const [theme, setTheme] = useState(() => {
@@ -51,7 +60,7 @@ function NavBar() {
   return (
     <>
       <div className='max-w-screen container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-99 bg-white text-black dark:bg-slate-900 dark:text-white'>
-        <div className='navbar shadow-sm  dark:bg-slate-900 dark:text-white  bg-white text-black'>
+        <div className='navbar shadow-lg bg-white dark:bg-slate-900 text-black dark:text-white'>
           <div className='navbar-start'>
             <div className='dropdown'>
               <div
@@ -66,13 +75,12 @@ function NavBar() {
                   viewBox='0 0 24 24'
                   stroke='currentColor'
                 >
-                  {" "}
                   <path
                     strokeLinecap='round'
                     strokeLinejoin='round'
                     strokeWidth='2'
                     d='M4 6h16M4 12h8m-8 6h16'
-                  />{" "}
+                  />
                 </svg>
               </div>
               <ul
@@ -116,54 +124,18 @@ function NavBar() {
                 />
               </label>
             </div>
+
             <div className='hidden md:block'>
               <label className='toggle text-base-content'>
                 <input
                   type='checkbox'
-                  value='synthwave'
                   className='theme-controller'
                   onClick={toggleTheme}
                 />
-                <svg
-                  aria-label='moon'
-                  xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 24 24'
-                >
-                  <g
-                    strokeLinejoin='round'
-                    strokeLinecap='round'
-                    strokeWidth='2'
-                    fill='none'
-                    stroke='currentColor'
-                  >
-                    <path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'></path>
-                  </g>
-                </svg>
-                <svg
-                  aria-label='sun'
-                  xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 24 24'
-                >
-                  <g
-                    strokeLinejoin='round'
-                    strokeLinecap='round'
-                    strokeWidth='2'
-                    fill='none'
-                    stroke='currentColor'
-                  >
-                    <circle cx='12' cy='12' r='4'></circle>
-                    <path d='M12 2v2'></path>
-                    <path d='M12 20v2'></path>
-                    <path d='m4.93 4.93 1.41 1.41'></path>
-                    <path d='m17.66 17.66 1.41 1.41'></path>
-                    <path d='M2 12h2'></path>
-                    <path d='M20 12h2'></path>
-                    <path d='m6.34 17.66-1.41 1.41'></path>
-                    <path d='m19.07 4.93-1.41 1.41'></path>
-                  </g>
-                </svg>
+                {/* Icons */}
               </label>
             </div>
+
             {!user ? (
               <>
                 <a
@@ -185,7 +157,7 @@ function NavBar() {
                     className='btn btn-ghost btn-circle avatar'
                   >
                     <div className='w-10 rounded-full'>
-                      <i className='fas fa-user md:text-2xl mt-3'></i>
+                      <i className='far fa-user md:text-2xl mt-3'></i>
                     </div>
                   </label>
                   <ul
@@ -211,16 +183,21 @@ function NavBar() {
                   </ul>
                 </div>
 
+                {/* 🛒 Cart Button */}
                 <div
                   className='cursor-pointer mt-3 flex items-center'
-                  onClick={() =>
-                    document.getElementById("my_modal_2").showModal()
-                  }
+                  onClick={() => setIsModalOpen(true)}
                 >
                   <span className='mr-2'>My Cart</span>
                   <i className='fas fa-cart-shopping md:text-2xl ml-1'></i>
                 </div>
-                <Cart />
+
+                {isModalOpen && (
+                  <Cart
+                    cartItems={cartItems}
+                    onClose={() => setIsModalOpen(false)}
+                  />
+                )}
               </div>
             )}
           </div>

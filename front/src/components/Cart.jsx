@@ -1,81 +1,169 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-function Cart() {
-  const list = [
-    {
-      _id: {
-        $oid: "6887cfc6d85228c9f7a278b7",
-      },
-      id: 1,
-      title: "The Midnight Library",
-      author: "Matt Haig",
-      rating: "5",
-      category: "Fiction",
-      image: "/cover1.png",
-      price: "950.00/=",
-    },
-    {
-      _id: {
-        $oid: "6887cfc6d85228c9f7a278c3",
-      },
-      id: 13,
-      title: "The Silk Roads: A New History of the World",
-      author: "Peter Frankopan",
-      rating: "5",
-      category: "History",
-      image: "/cover3.png",
-      price: "1200.00/=",
-    },
-    {
-      _id: {
-        $oid: "6887cfc6d85228c9f7a278cb",
-      },
-      id: 21,
-      title: "Frankenstein",
-      author: "Mary Shelley",
-      rating: "5",
-      category: "Thriller",
-      image: "/cover4.png",
-      price: "650.00/=",
-    },
-  ];
+function Cart({ onClose }) {
+  const dialogRef = useRef(null);
+  const [totals, setTotals] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    setTotals(cartItems.map(() => 1));
+  }, [cartItems]);
+
+  useEffect(() => {
+    if (dialogRef.current) {
+      dialogRef.current.showModal();
+    }
+  }, []);
+
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartItems(stored);
+    setTotals(Array(stored.length).fill(1));
+  }, []);
+
+  const handleRemoveItem = (indexToRemove) => {
+    const updatedCart = cartItems.filter((_, i) => i !== indexToRemove);
+    const updatedTotals = totals.filter((_, i) => i !== indexToRemove);
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setCartItems(updatedCart);
+    setTotals(updatedTotals);
+  };
+
+  const handleAdd = (index) => {
+    const updated = [...totals];
+    updated[index] += 1;
+    setTotals(updated);
+  };
+
+  const handleSubtract = (index) => {
+    const updated = [...totals];
+    if (updated[index] > 1) {
+      updated[index] -= 1;
+      setTotals(updated);
+    }
+  };
+
+  const totalPrice = cartItems.reduce((acc, item, index) => {
+    return acc + parseInt(item.price) * totals[index];
+  }, 0);
+
   return (
     <div>
-      <dialog id='my_modal_2' className='modal'>
-        <div className='modal-box !p-0 border-none fixed right-0 h-screen md:w-1/3 w-70 translate-x-50 group-hover:translate-x-0 transition duration-1000 ease-in-out dark:bg-slate-900 bg-white rounded-none'>
-          <div className='w-full h-20 flex px-3 items-center bg-amber-500'>
-            <h2 className='text-3xl font-semibold '>My Cart</h2>
+      <dialog ref={dialogRef} className='modal min-h-screen'>
+        <div className='modal-box !p-0 border-none fixed right-0 min-h-screen md:w-1/3 w-70 translate-x-50 group-hover:translate-x-0 transition duration-1000 ease-in-out dark:bg-slate-900 bg-white rounded-none'>
+          <div className='w-full h-15 flex px-3 items-center bg-amber-500'>
+            <h2 className='text-3xl font-semibold'>🛒 Cart</h2>
           </div>
-          <div className='h-full p-3 flex-col space-y-3'>
-            {list.map((item, idx) => (
-              <div
-                className='flex h-auto w-ful rounded-xl bg-gray-400 md:p-2'
-                key={idx}
-              >
-                <div className='border-gray-500 border-1 rounded-xl w-full flex text-gray-600 font-bold text-xs md:text-sm'>
-                  <div className='md:p-3 p-1 h-full flex justify-center items-center border-r-1 border-gray-500 cursor-pointer  hover:text-red-500'>
-                    <i className='fas fa-x'></i>
-                  </div>
-                  <div className='md:p-3 p-1 h-full flex  items-center border-r-1 border-gray-500 md:w-45'>
-                    {item.title}
-                  </div>
-                  <div className='md:p-3 p-1 h-full flex items-center border-r-1 border-gray-500 md:w-35'>
-                    {item.author}
-                  </div>
-                  <div className='md:p-3 p-1 h-full flex  items-center border-r-1 border-gray-500 md:w-20'>
-                    Ksh {item.price}
-                  </div>
-                  <div className='md:p-3 p-1 h-full flex  items-center border-gray-500 cursor-pointer hover:text-green-500 hover:underline '>
-                    Buy
-                  </div>
-                </div>
+
+          {cartItems.length === 0 ? (
+            <div className='h-full flex items-center justify-center'>
+              <div className='text-center'>
+                <i className='fas fa-shop-slash text-7xl mb-5'></i>
+                <p className='font-semibold text-2xl'>Your Cart is empty</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ) : (
+            <div className='h-full'>
+              <div className='h-full flex-col space-y-3 px-3'>
+                {cartItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className='flex h-auto w-full p-5 border-t-1 border-gray-500'
+                  >
+                    <div className='w-1/2 mr-5'>
+                      <img src={item.image} alt='cover' />
+                    </div>
+                    <div className='w-full flex-col space-y-1'>
+                      <div className='font-bold md:text-xl text-gray-500'>
+                        {item.author}
+                      </div>
+                      <div className='font-bold md:text-xl '>{item.title}</div>
+                      <div>
+                        <b>Category: </b>
+                        {item.category}
+                      </div>
+                      <div className='font-semibold my-5 md:text-xl text-gray-500'>
+                        Ksh {item.price}/=
+                      </div>
+
+                      <div className='flex'>
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td
+                                className='border-1 py-1 px-2 cursor-pointer'
+                                onClick={() => handleSubtract(index)}
+                              >
+                                <i className='fas fa-minus'></i>
+                              </td>
+                              <td className='border-1 px-5 py-1'>
+                                {totals[index]}
+                              </td>
+                              <td
+                                className='border-1 py-1 px-2 cursor-pointer'
+                                onClick={() => handleAdd(index)}
+                              >
+                                <i className='fas fa-plus'></i>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <button
+                          className='text-xl hover:text-red-500 cursor-pointer ml-10'
+                          onClick={() => handleRemoveItem(index)}
+                          // onClick={() => {
+                          //   localStorage.removeItem("cart");
+                          //   // setCartItems([]);
+                          //   localStorage.setItem(
+                          //     "cart",
+                          //     JSON.stringify(updatedCart)
+                          //   );
+                          // }}
+                        >
+                          <i className='far fa-trash-can'></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <footer className='footer border-t-2 p-3'>
+                <div className='flex-col w-full'>
+                  <div className='flex justify-between w-full'>
+                    <span className='text-gray-500'>Sub Total:</span>
+                    <span className='font-semibold text-right'>
+                      Ksh {totalPrice.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className='flex justify-between w-full'>
+                    <span className='text-gray-500'>Shipping:</span>
+                    <span className='font-semibold text-right'>Ksh 00.00</span>
+                  </div>
+                  <div className='flex justify-between w-full'>
+                    <span className='text-gray-500'>Taxes</span>
+                    <span className='font-semibold text-right'>Ksh 00.00</span>
+                  </div>
+                  <div className='flex justify-between w-full mb-4'>
+                    <span className='text-gray-500'>Discount</span>
+                    <span className='font-semibold text-right'>Ksh 200.00</span>
+                  </div>
+                  <div className='flex justify-between w-full text-lg font-bold border-t pt-2'>
+                    <span>Total</span>
+                    <span className='font-semibold text-right'>
+                      Ksh {(totalPrice - 200).toLocaleString()}
+                    </span>
+                  </div>
+                  <button className='w-full h-15 bg-amber-500 flex justify-center items-center text-black text-xl font-bold'>
+                    Proceed to CheckOut
+                  </button>
+                </div>
+              </footer>
+            </div>
+          )}
         </div>
-        <form method='dialog' className='modal-backdrop'>
-          <button>close</button>
-        </form>
+        <div className='modal-backdrop' onClick={onClose}></div>
       </dialog>
     </div>
   );

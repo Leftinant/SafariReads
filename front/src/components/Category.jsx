@@ -53,8 +53,8 @@ function Category() {
             oceans of mystery, and the soaring skies of fantasy.
           </p>
         </div>
-        <div className='flex'>
-          <div className='md:w-1/5 w-2/3 border-r-1 '>
+        <div className='flex flex-col md:flex-row'>
+          <div className='md:w-1/5 w-full md:border-r-1 '>
             <h1 className='font-semibold text-2xl my-5'>FILTERS</h1>
             <div className='border-t-1 py-4'>
               <h2 className='text-xl  font-semibold'>Categories</h2>
@@ -77,7 +77,7 @@ function Category() {
                       value={option}
                       checked={categoryFilter === option}
                       onChange={() => setCategoryFilter(option)}
-                      className='md:mx-3 '
+                      className='mx-3 '
                     />
                     {option}
                   </label>
@@ -97,7 +97,7 @@ function Category() {
                       value={option}
                       checked={ratingFilter === option}
                       onChange={() => setRatingFilter(option)}
-                      className='md:mx-3'
+                      className='mx-3'
                     />
                     {option === "All" ? "All" : `${option} Star Rating`}
                   </label>
@@ -117,7 +117,7 @@ function Category() {
                       value={option}
                       checked={priceFilter === option}
                       onChange={() => setPriceFilter(option)}
-                      className='md:mx-3'
+                      className='mx-3'
                     />
                     {option === "<500"
                       ? "Below 500"
@@ -146,7 +146,7 @@ function Category() {
                       value={value}
                       checked={availabilityFilter === value}
                       onChange={() => setAvailabilityFilter(value)}
-                      className='md:mx-3'
+                      className='mx-3'
                     />
                     {label}
                   </label>
@@ -155,11 +155,15 @@ function Category() {
             </div>
           </div>
 
-          <div className='p-5 w-full'>
-            <div className='w-full justify-end'>
-              <div className='dropdown dropdown-start'>
-                <div tabIndex={0} role='button' className='btn rounded'>
-                  Click <i className='fas fa-arrow-down'></i>
+          <div className='px-5 w-full'>
+            <div className='w-full justify-end flex'>
+              <div className='dropdown dropdown-start m-5'>
+                <div
+                  tabIndex={0}
+                  role='button'
+                  className='btn-outline border-1  p-2 rounded-2xl w-52'
+                >
+                  Sort by <i className='fas fa-arrow-down ml-30'></i>
                 </div>
                 <ul
                   tabIndex={0}
@@ -174,9 +178,9 @@ function Category() {
                 </ul>
               </div>
             </div>
-            <div className='grid md:grid-cols-6 '>
-              {filteredItems.map((item) => (
-                <Cards item={item} key={item.id} className='mx-auto' />
+            <div className='grid md:grid-cols-5 '>
+              {filteredItems.map((book, index) => (
+                <Cards item={book} key={book._id || index} />
               ))}
             </div>
           </div>
