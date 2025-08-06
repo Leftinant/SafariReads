@@ -48,6 +48,21 @@ function Cart({ onClose }) {
     return acc + parseInt(item.price) * totals[index];
   }, 0);
 
+  const handleSubmit = () => {
+    const orderData = {
+      items: cartItems,
+      subtotal: totalPrice,
+      discount: 200,
+      shipping: 0,
+      taxes: 0,
+      total: totalPrice - 200,
+    };
+
+    localStorage.setItem("orderSummary", JSON.stringify(orderData));
+
+    window.location.href = "/checkout";
+  };
+
   return (
     <div>
       <dialog ref={dialogRef} className='modal min-h-screen'>
@@ -57,7 +72,7 @@ function Cart({ onClose }) {
           </div>
 
           {cartItems.length === 0 ? (
-            <div className='h-full flex items-center justify-center'>
+            <div className='h-full flex justify-center my-50'>
               <div className='text-center'>
                 <i className='fas fa-shop-slash text-7xl mb-5'></i>
                 <p className='font-semibold text-2xl'>Your Cart is empty</p>
@@ -69,8 +84,7 @@ function Cart({ onClose }) {
                 {cartItems.map((item, index) => (
                   <div
                     key={index}
-                    className='flex h-auto w-full p-5 border-t-1 border-gray-500'
-                  >
+                    className='flex h-auto w-full p-5 border-t-1 border-gray-500'>
                     <div className='w-1/2 mr-5'>
                       <img src={item.image} alt='cover' />
                     </div>
@@ -93,8 +107,7 @@ function Cart({ onClose }) {
                             <tr>
                               <td
                                 className='border-1 py-1 px-2 cursor-pointer'
-                                onClick={() => handleSubtract(index)}
-                              >
+                                onClick={() => handleSubtract(index)}>
                                 <i className='fas fa-minus'></i>
                               </td>
                               <td className='border-1 px-5 py-1'>
@@ -102,8 +115,7 @@ function Cart({ onClose }) {
                               </td>
                               <td
                                 className='border-1 py-1 px-2 cursor-pointer'
-                                onClick={() => handleAdd(index)}
-                              >
+                                onClick={() => handleAdd(index)}>
                                 <i className='fas fa-plus'></i>
                               </td>
                             </tr>
@@ -111,16 +123,7 @@ function Cart({ onClose }) {
                         </table>
                         <button
                           className='text-xl hover:text-red-500 cursor-pointer ml-10'
-                          onClick={() => handleRemoveItem(index)}
-                          // onClick={() => {
-                          //   localStorage.removeItem("cart");
-                          //   // setCartItems([]);
-                          //   localStorage.setItem(
-                          //     "cart",
-                          //     JSON.stringify(updatedCart)
-                          //   );
-                          // }}
-                        >
+                          onClick={() => handleRemoveItem(index)}>
                           <i className='far fa-trash-can'></i>
                         </button>
                       </div>
@@ -152,10 +155,12 @@ function Cart({ onClose }) {
                   <div className='flex justify-between w-full text-lg font-bold border-t pt-2'>
                     <span>Total</span>
                     <span className='font-semibold text-right'>
-                      Ksh {(totalPrice - 200).toLocaleString()}
+                      Ksh {(totalPrice - 200).toLocaleString()}.00
                     </span>
                   </div>
-                  <button className='w-full h-15 bg-amber-500 flex justify-center items-center text-black text-xl font-bold'>
+                  <button
+                    className='btn w-full h-15 bg-amber-500 flex justify-center items-center text-black text-xl font-bold'
+                    onClick={handleSubmit}>
                     Proceed to CheckOut
                   </button>
                 </div>

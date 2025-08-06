@@ -28,8 +28,9 @@ function Login() {
       setUser(user);
       window.location.reload();
 
-      toast.success("Login successful!");
       document.getElementById("my_modal_3").close();
+      window.location.href = "/";
+      toast.success("Login successful!");
     } catch (err) {
       console.error("Login error:", err);
       toast.error(err.response?.data?.message || "Login failed");
@@ -44,8 +45,7 @@ function Login() {
             <button
               type='button'
               className='px-2 absolute text-xl text-gray-500 right-2 top-2 cursor-pointer hover:text-black'
-              onClick={() => document.getElementById("my_modal_3").close()}
-            >
+              onClick={() => document.getElementById("my_modal_3").close()}>
               ✕
             </button>
 
@@ -60,15 +60,13 @@ function Login() {
                   <svg
                     className='h-[1em] opacity-50'
                     xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 24 24'
-                  >
+                    viewBox='0 0 24 24'>
                     <g
                       strokeLinejoin='round'
                       strokeLinecap='round'
                       strokeWidth='2.5'
                       fill='none'
-                      stroke='currentColor'
-                    >
+                      stroke='currentColor'>
                       <rect width='20' height='16' x='2' y='4' rx='2'></rect>
                       <path d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'></path>
                     </g>
@@ -88,8 +86,7 @@ function Login() {
                   <label htmlFor='password'>Password</label>
                   <a
                     href='#'
-                    className='ml-auto inline-block font-semibold text-sm underline-offset-4 hover:underline text-blue-700'
-                  >
+                    className='ml-auto inline-block font-semibold text-sm underline-offset-4 hover:underline text-blue-700'>
                     Forgot your password?
                   </a>
                 </div>
@@ -97,22 +94,19 @@ function Login() {
                   <svg
                     className='h-[1em] opacity-50'
                     xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 24 24'
-                  >
+                    viewBox='0 0 24 24'>
                     <g
                       strokeLinejoin='round'
                       strokeLinecap='round'
                       strokeWidth='2.5'
                       fill='none'
-                      stroke='currentColor'
-                    >
+                      stroke='currentColor'>
                       <path d='M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z'></path>
                       <circle
                         cx='16.5'
                         cy='7.5'
                         r='.5'
-                        fill='currentColor'
-                      ></circle>
+                        fill='currentColor'></circle>
                     </g>
                   </svg>
                   <input
@@ -131,8 +125,7 @@ function Login() {
             </div>
             <button
               type='submit'
-              className='btn w-full bg-yellow-600 text-white rounded-xl py-2 cursor-pointer font-semibold hover:bg-yellow-700 duration-500'
-            >
+              className='btn w-full bg-yellow-600 text-white rounded-xl py-2 cursor-pointer font-semibold hover:bg-yellow-700 duration-500'>
               Login
             </button>
             <div className='w-full text-center text-sm font-bold my-2'>OR</div>
@@ -142,26 +135,21 @@ function Login() {
                 width='16'
                 height='16'
                 xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 512 512'
-              >
+                viewBox='0 0 512 512'>
                 <g>
                   <path d='m0 0H512V512H0' fill='#fff'></path>
                   <path
                     fill='#34a853'
-                    d='M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341'
-                  ></path>
+                    d='M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341'></path>
                   <path
                     fill='#4285f4'
-                    d='m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57'
-                  ></path>
+                    d='m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57'></path>
                   <path
                     fill='#fbbc02'
-                    d='m90 341a208 200 0 010-171l63 49q-12 37 0 73'
-                  ></path>
+                    d='m90 341a208 200 0 010-171l63 49q-12 37 0 73'></path>
                   <path
                     fill='#ea4335'
-                    d='m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55'
-                  ></path>
+                    d='m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55'></path>
                 </g>
               </svg>
               Login with Google

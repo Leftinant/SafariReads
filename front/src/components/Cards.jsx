@@ -31,8 +31,18 @@ const Cards = ({ item, size = "small" }) => {
   };
 
   const handleBuy = (book) => {
-    toast.success(`Buying "${book.title}" now...`);
-    // Implement buy logic
+    const orderData = {
+      items: book,
+      subtotal: book.price,
+      discount: 0,
+      shipping: 0,
+      taxes: 0,
+      total: book.price,
+    };
+
+    localStorage.setItem("orderSummary", JSON.stringify(orderData));
+
+    window.location.href = "/checkout";
   };
 
   const handleIconClick = (label, book) => {
@@ -52,28 +62,23 @@ const Cards = ({ item, size = "small" }) => {
   };
   return (
     <div
-      className={`max-w-xs group w-60 rounded overflow-hidden bg-white  dark:bg-slate-900 dark:text-white`}
-    >
+      className={`max-w-xs group w-60 rounded overflow-hidden bg-white  dark:bg-slate-900 dark:text-white`}>
       <div className='relative overflow-hidden'>
         <img src={item.image} alt='Book Cover' className='w-full h-auto ' />
 
-        <div className='absolute inset-0 bg-black/30 flex flex-col items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-1000 gr'>
+        <div className='absolute inset-0 bg-black/30 flex flex-col items-end justify-center md:opacity-0 group-hover:opacity-100 transition-opacity duration-1000 gr'>
           {ICONS.map(({ icon, label, delay }, idx) => (
             <div
               key={idx}
-              className={`relative flex items-center group/icon transform translate-x-20 group-hover:translate-x-0 transition duration-1000`}
-              style={{ transitionDelay: `${delay}ms` }}
-            >
-              {/* Tooltip Label */}
+              className={`relative flex items-center group/icon transform md:translate-x-20 group-hover:translate-x-0 transition duration-1000`}
+              style={{ transitionDelay: `${delay}ms` }}>
               <span className='absolute right-full px-2 py-1 bg-black text-white text-xs rounded shadow opacity-0 group-hover/icon:opacity-100 transition duration-200 whitespace-nowrap'>
                 {label}
               </span>
 
-              {/* Icon Button */}
               <button
                 className='bg-yellow-600 text-white p-2 rounded-full shadow hover:bg-black w-9 h-9 m-2 flex items-center justify-center cursor-pointer'
-                onClick={() => handleIconClick(label, item)}
-              >
+                onClick={() => handleIconClick(label, item)}>
                 <i className={icon}></i>
               </button>
             </div>

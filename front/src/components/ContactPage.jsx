@@ -1,8 +1,7 @@
 const ContactSection = () => {
   return (
-    <section className='pt-30 pb-20 flex items-center justify-center px-4 dark:bg-slate-900 dark:text-white  bg-white text-black'>
+    <section className='pt-50 pb-20 flex items-center justify-center px-4 dark:bg-slate-900 dark:text-white  bg-white text-black'>
       <div className='w-full max-w-6xl dark:bg-slate-900 dark:text-white  bg-white text-black rounded-lg shadow-lg overflow-hidden flex flex-col lg:flex-row'>
-        {/* Left Section */}
         <div className='w-full lg:w-1/2 bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-8 lg:p-12'>
           <a href='/'>
             <button className='mb-6 flex items-center space-x-2 text-sm '>
@@ -41,8 +40,6 @@ const ContactSection = () => {
             </div>
           </div>
         </div>
-
-        {/* Right Section */}
         <div className='w-full lg:w-1/2 bg-base p-8 lg:p-12 flex flex-col justify-center'>
           <h2 className='text-2xl font-semibold mb-6'>Contact form</h2>
 
@@ -98,14 +95,12 @@ const ContactSection = () => {
               <textarea
                 rows='4'
                 placeholder='How Can We Help?'
-                className='mt-1 w-full border border-gray-400 rounded-lg px-4 py-2'
-              ></textarea>
+                className='mt-1 w-full border border-gray-400 rounded-lg px-4 py-2'></textarea>
             </div>
 
             <button
               type='submit'
-              className='bg-yellow-200 text-yellow-600 font-medium py-2 px-6 rounded-full hover:bg-yellow-300 transition'
-            >
+              className='bg-yellow-200 text-yellow-600 font-medium py-2 px-6 rounded-full hover:bg-yellow-300 transition'>
               Send Message →
             </button>
           </form>

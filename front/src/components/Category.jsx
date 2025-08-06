@@ -38,7 +38,7 @@ function Category() {
 
   return (
     <>
-      <div className='max-w-screen container mx-auto md:px-30 px-5 dark:bg-slate-900 dark:text-white  bg-white text-black'>
+      <div className='max-w-screen container mx-auto md:px-30 px-5 dark:bg-slate-900 dark:text-white  bg-white text-black z-0'>
         <div className='pt-30 pb-10 border-b-2'>
           <h1 className='text-4xl font-semibold'>
             Begin Your Literary{" "}
@@ -157,26 +157,14 @@ function Category() {
 
           <div className='px-5 w-full'>
             <div className='w-full justify-end flex'>
-              <div className='dropdown dropdown-start m-5'>
-                <div
-                  tabIndex={0}
-                  role='button'
-                  className='btn-outline border-1  p-2 rounded-2xl w-52'
-                >
-                  Sort by <i className='fas fa-arrow-down ml-30'></i>
-                </div>
-                <ul
-                  tabIndex={0}
-                  className='dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm'
-                >
-                  <li>
-                    <a>Item 1</a>
-                  </li>
-                  <li>
-                    <a>Item 2</a>
-                  </li>
-                </ul>
-              </div>
+              <select
+                defaultValue='Pick a color'
+                className='select bg-gray-100 dark:bg-gray-800 rounded-2xl m-5'>
+                <option disabled={true}>Pick a color</option>
+                <option>Crimson</option>
+                <option>Amber</option>
+                <option>Velvet</option>
+              </select>
             </div>
             <div className='grid md:grid-cols-5 '>
               {filteredItems.map((book, index) => (

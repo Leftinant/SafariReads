@@ -59,22 +59,20 @@ function NavBar() {
 
   return (
     <>
-      <div className='max-w-screen container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-99 bg-white text-black dark:bg-slate-900 dark:text-white'>
-        <div className='navbar shadow-lg bg-white dark:bg-slate-900 text-black dark:text-white'>
+      <div className='max-w-screen container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-99'>
+        <div className='navbar shadow-lg bg-white dark:bg-slate-900 text-black dark:text-white '>
           <div className='navbar-start'>
             <div className='dropdown'>
               <div
                 tabIndex={0}
                 role='button'
-                className='btn btn-ghost lg:hidden'
-              >
+                className='btn btn-ghost lg:hidden'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   className='h-5 w-5'
                   fill='none'
                   viewBox='0 0 24 24'
-                  stroke='currentColor'
-                >
+                  stroke='currentColor'>
                   <path
                     strokeLinecap='round'
                     strokeLinejoin='round'
@@ -85,8 +83,7 @@ function NavBar() {
               </div>
               <ul
                 tabIndex={0}
-                className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow'
-              >
+                className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow'>
                 {navItems}
               </ul>
             </div>
@@ -104,15 +101,13 @@ function NavBar() {
                 <svg
                   className='h-[1em] opacity-50'
                   xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 24 24'
-                >
+                  viewBox='0 0 24 24'>
                   <g
                     strokeLinejoin='round'
                     strokeLinecap='round'
                     strokeWidth='2.5'
                     fill='none'
-                    stroke='currentColor'
-                  >
+                    stroke='currentColor'>
                     <circle cx='11' cy='11' r='8'></circle>
                     <path d='m21 21-4.3-4.3'></path>
                   </g>
@@ -132,7 +127,6 @@ function NavBar() {
                   className='theme-controller'
                   onClick={toggleTheme}
                 />
-                {/* Icons */}
               </label>
             </div>
 
@@ -141,8 +135,7 @@ function NavBar() {
                 <a
                   onClick={() =>
                     document.getElementById("my_modal_3").showModal()
-                  }
-                >
+                  }>
                   <button className='btn bg-yellow-500 hover:bg-yellow-700 mx-3 rounded-2xl '>
                     Login
                   </button>
@@ -154,16 +147,14 @@ function NavBar() {
                 <div className='dropdown dropdown-end'>
                   <label
                     tabIndex={0}
-                    className='btn btn-ghost btn-circle avatar'
-                  >
+                    className='btn btn-ghost btn-circle avatar'>
                     <div className='w-10 rounded-full'>
                       <i className='far fa-user md:text-2xl mt-3'></i>
                     </div>
                   </label>
                   <ul
                     tabIndex={0}
-                    className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
-                  >
+                    className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'>
                     <li>
                       <a className='justify-between'>
                         Profile <span className='badge'>New</span>
@@ -174,20 +165,17 @@ function NavBar() {
                         onClick={() => {
                           localStorage.removeItem("token");
                           localStorage.removeItem("user");
-                          window.location.reload();
-                        }}
-                      >
+                          window.location.href = "/";
+                        }}>
                         Logout
                       </a>
                     </li>
                   </ul>
                 </div>
 
-                {/* 🛒 Cart Button */}
                 <div
                   className='cursor-pointer mt-3 flex items-center'
-                  onClick={() => setIsModalOpen(true)}
-                >
+                  onClick={() => setIsModalOpen(true)}>
                   <span className='mr-2'>My Cart</span>
                   <i className='fas fa-cart-shopping md:text-2xl ml-1'></i>
                 </div>

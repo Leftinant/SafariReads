@@ -4,6 +4,7 @@ import Signup from "./components/Signup";
 import Home from "./pages/Home";
 import { Toaster } from "react-hot-toast";
 import Contact from "./pages/Contact";
+import CheckOut from "./pages/Checkout";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/category' element={<Categories />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/checkout' element={<CheckOut />} />
       </Routes>
     </>
   );
